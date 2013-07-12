@@ -1,4 +1,10 @@
-def DictWriterDB(table , diction):
+def DictWriterDB(database, user, password, table , diction):
+    #Connection
+    import psycopg2
+    connection="dbname="+database+" user="+user+" password="+password
+    conn=psycopg2.connect(connection)
+    cur=conn.cursor()
+
     #Get column names from database
     SQL= 'SELECT * FROM \"'+table+'\";'
     cur.execute(SQL)
